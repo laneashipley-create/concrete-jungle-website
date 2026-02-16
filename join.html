@@ -49,8 +49,7 @@
         <p style="text-align: center; color: var(--fog); max-width: 520px; margin: 0 auto 2rem;">
           Interested in training with us? Send a quick note. We’ll get back to you and tell you when and where to show up.
         </p>
-        <form class="join-form" action="mailto:lane.a.shipley@gmail.com" method="get" enctype="application/x-www-form-urlencoded">
-          <input type="hidden" name="subject" value="Concrete Jungle - New member interest">
+        <form class="join-form" id="join-form" action="mailto:lane.a.shipley@gmail.com" method="get">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -84,5 +83,17 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById('join-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var subject = "Concrete Jungle // New Member Interest";
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var message = document.getElementById('message').value.trim();
+      var body = "Name: " + name + "\nEmail: " + email + "\n\n" + message;
+      var mailto = "mailto:lane.a.shipley@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = mailto;
+    });
+  </script>
 </body>
 </html>

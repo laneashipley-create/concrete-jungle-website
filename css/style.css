@@ -198,8 +198,33 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 }
 
 @media (max-width: 768px) {
+  .site-header .container {
+    justify-content: flex-start;
+  }
   .nav-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--fog-dark);
+    font-size: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .nav-toggle::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -10px;
+    margin-top: -1px;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
   }
   .nav-list {
     display: none;

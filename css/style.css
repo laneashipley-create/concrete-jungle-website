@@ -1,0 +1,788 @@
+/* ============================================
+   CONCRETE JUNGLE — Gritty, urban, SF
+   Colors: concrete, steel, fog, red accent
+   ============================================ */
+
+:root {
+  --concrete: #2d2d2d;
+  --concrete-light: #3d3d3d;
+  --steel: #1a1a1a;
+  --fog: #e8e8e8;
+  --fog-dark: #9a9a9a;
+  --accent: #c00;
+  --accent-hover: #e00;
+  --white: #fff;
+  --logo-gray: #808587;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--fog);
+  background: var(--steel);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ----- Typography ----- */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); color: var(--white); }
+h3 { font-size: 1.25rem; color: var(--fog-dark); }
+
+.tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* ----- Layout ----- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section--dark {
+  background: var(--steel);
+}
+
+.section--concrete {
+  background: var(--concrete);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ----- Header & Nav ----- */
+/* No logo in header (logo in page-hero on inner pages, in main hero on home) */
+.site-header .logo-link {
+  display: none;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(26, 26, 26, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s ease;
+}
+
+.site-header .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+.logo-link:hover {
+  color: inherit;
+  opacity: 0.9;
+}
+
+.logo-nav {
+  height: 64px;
+  width: auto;
+}
+.logo-nav svg {
+  height: 100%;
+  width: auto;
+}
+
+/* Nav: gritty horizontal links */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fog);
+  border: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.nav-list a:hover {
+  color: var(--white);
+  border-color: var(--fog-dark);
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-list a.nav-current {
+  color: var(--white);
+  border-bottom: 2px solid var(--accent);
+  background: rgba(255,255,255,0.03);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--fog-dark);
+  color: var(--fog);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  color: var(--white);
+  border-color: var(--fog);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--steel);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .nav-list.is-open {
+    display: flex;
+  }
+  .nav-list a {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ----- Hero ----- */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--concrete) center / cover no-repeat;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 26, 26, 0.5) 0%,
+    rgba(26, 26, 26, 0.75) 60%,
+    rgba(26, 26, 26, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.hero-logo {
+  max-width: 560px;
+  width: 90%;
+  margin: 0 auto 1.25rem;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+
+.hero .tagline {
+  margin-bottom: 0.5rem;
+}
+
+.hero-subline {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--fog);
+  margin: 0 0 2rem;
+  opacity: 0.95;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.hero-cta:hover {
+  background: transparent;
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ----- Buttons ----- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--white);
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--white);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--accent);
+}
+.btn--outline:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ----- Footer ----- */
+.site-footer {
+  background: var(--steel);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2.5rem 0;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  height: 36px;
+  width: auto;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--fog);
+  font-size: 0.95rem;
+}
+.footer-social a:hover {
+  color: var(--accent);
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--fog-dark);
+  margin: 0;
+}
+
+/* ----- Page content (inner pages) ----- */
+/* Clear fixed header so hero text isn't hidden behind nav */
+.page-hero {
+  padding: 4.5rem 0 1.5rem;
+  min-height: 140px;
+  background: var(--concrete);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  align-self: stretch;
+}
+
+.page-hero .container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.page-hero h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+}
+
+.page-hero .tagline {
+  margin: 0.5rem 0 0;
+  color: var(--fog);
+}
+
+.page-hero .logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-height: 0;
+}
+
+.page-hero-logo {
+  height: 220px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
+}
+
+.page-hero .logo-link:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .page-hero .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .page-hero-logo {
+    height: 150px;
+  }
+}
+
+.main-content {
+  padding: 3rem 0;
+}
+
+/* ----- Story ----- */
+.story-body {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.story-body p {
+  margin: 0 0 1.25em;
+  color: var(--fog);
+}
+
+/* ----- Schedule (iframe) ----- */
+.schedule-wrap {
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 70vh;
+}
+
+.schedule-wrap iframe {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  border: 0;
+  display: block;
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+.container--schedule {
+  max-width: 900px;
+}
+
+.schedule-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.schedule-layout .calendar {
+  flex: 1;
+  min-width: 280px;
+}
+
+.schedule-layout .calendar-day-detail {
+  margin-top: 0;
+  min-width: 220px;
+  max-width: 320px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .schedule-layout {
+    flex-direction: column;
+  }
+  .schedule-layout .calendar-day-detail {
+    max-width: none;
+  }
+}
+
+/* ----- Schedule calendar (month view) ----- */
+.calendar {
+  background: var(--concrete);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--white);
+  text-align: center;
+  flex: 1;
+}
+
+.calendar-nav {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--fog);
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.calendar-nav:hover {
+  color: var(--white);
+  background: var(--concrete);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-weekdays span {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fog-dark);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: var(--fog);
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.calendar-day:hover:not(.calendar-day--empty) {
+  background: var(--concrete);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.calendar-day--empty {
+  background: transparent;
+  border-color: transparent;
+  visibility: hidden;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Highlighted = selected day (moves on click; starts as today) */
+.calendar-day--highlighted {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.calendar-day--highlighted:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.calendar-day-detail {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--concrete);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+.calendar-day-detail-message {
+  margin: 0;
+  color: var(--fog-dark);
+  font-size: 1rem;
+}
+
+.calendar-day-detail-message strong,
+.calendar-day-detail-workout {
+  color: var(--white);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+/* ----- Locations ----- */
+.locations-image-wrap {
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.locations-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.location-block {
+  margin-bottom: 2.5rem;
+}
+
+.location-block:last-child {
+  margin-bottom: 0;
+}
+
+.location-heading {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.map-wrap {
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.map-wrap iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  display: block;
+}
+
+.map-link-wrap {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.location-note {
+  text-align: center;
+  color: var(--fog-dark);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* ----- Photos gallery ----- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gallery-item {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.instagram-cta {
+  text-align: center;
+  padding: 2rem;
+  background: var(--concrete);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+.instagram-cta p {
+  margin: 0 0 1rem;
+  color: var(--fog);
+}
+
+/* ----- Join form (mailto) ----- */
+.join-form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--fog-dark);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--white);
+  background: var(--concrete-light);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 2px;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.form-group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--fog-dark);
+  opacity: 0.8;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+}
+.form-actions .btn {
+  width: 100%;
+  padding: 1rem;
+}
+
+/* ----- Utility ----- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

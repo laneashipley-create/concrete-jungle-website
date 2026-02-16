@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Today's workout — Concrete Jungle SF.">
+  <title>Today's Workout | Concrete Jungle SF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo-link" aria-label="Concrete Jungle home">
+        <img class="logo-nav" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="todays-workout.html" class="nav-current">TODAY'S WORKOUT</a></li>
+          <li><a href="schedule.html">SCHEDULE</a></li>
+          <li><a href="location.html">Locations</a></li>
+          <li><a href="photos.html">Photos</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div>
+          <h1>Today's Workout</h1>
+          <p class="tagline">Weekly sessions — check the doc for the latest</p>
+        </div>
+        <a href="index.html" class="logo-link" aria-label="Concrete Jungle home">
+          <img class="page-hero-logo" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+        </a>
+      </div>
+    </section>
+
+    <section class="main-content section--dark">
+      <div class="container">
+        <div class="schedule-wrap">
+          <iframe
+            title="Concrete Jungle weekly schedule"
+            src="https://docs.google.com/document/d/e/2PACX-1vRzJvuggDkZd3A8TEgDncgYRbxzKc8IbML4siAXn9TgkWeQv8gRNnWLzTLOO2K0JHnXMtU76erp_Wbo/pub?embedded=true"
+          ></iframe>
+        </div>
+        <p style="text-align: center; color: var(--fog-dark); font-size: 0.9rem;">
+          Can't see the schedule? <a href="https://docs.google.com/document/d/e/2PACX-1vRzJvuggDkZd3A8TEgDncgYRbxzKc8IbML4siAXn9TgkWeQv8gRNnWLzTLOO2K0JHnXMtU76erp_Wbo/pub" target="_blank" rel="noopener noreferrer">Open the Google Doc in a new tab</a>. Make sure the doc is set to "Anyone with the link can view" (or "Publish to web") for the embed to work.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo-link">
+        <img class="footer-logo" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+      </a>
+      <p class="footer-copy">Concrete Jungle SF · Forged in the fog</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

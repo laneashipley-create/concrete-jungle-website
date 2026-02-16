@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Workout schedule calendar — Concrete Jungle SF.">
+  <title>Schedule | Concrete Jungle SF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo-link" aria-label="Concrete Jungle home">
+        <img class="logo-nav" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+      </a>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">Menu</button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="todays-workout.html">TODAY'S WORKOUT</a></li>
+          <li><a href="schedule.html" class="nav-current">SCHEDULE</a></li>
+          <li><a href="location.html">Locations</a></li>
+          <li><a href="photos.html">Photos</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div>
+          <h1>Schedule</h1>
+          <p class="tagline">Click a day to see if we are training!</p>
+        </div>
+        <a href="index.html" class="logo-link" aria-label="Concrete Jungle home">
+          <img class="page-hero-logo" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+        </a>
+      </div>
+    </section>
+
+    <section class="main-content section--dark">
+      <div class="container container--schedule">
+        <div class="schedule-layout">
+        <div class="calendar">
+          <div class="calendar-header">
+            <button type="button" class="calendar-nav calendar-nav--prev" id="calendar-prev" aria-label="Previous month">&larr;</button>
+            <h2 class="calendar-title" id="calendar-month-year"></h2>
+            <button type="button" class="calendar-nav calendar-nav--next" id="calendar-next" aria-label="Next month">&rarr;</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Monday</span>
+            <span>Tuesday</span>
+            <span>Wednesday</span>
+            <span>Thursday</span>
+            <span>Friday</span>
+            <span>Saturday</span>
+            <span>Sunday</span>
+          </div>
+          <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+        <div class="calendar-day-detail" id="calendar-day-detail" aria-live="polite">
+          <p class="calendar-day-detail-message" id="calendar-day-detail-message">Click a day to see if there's a workout scheduled.</p>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo-link">
+        <img class="footer-logo" src="Assets/Concrete Jungle - Main Logo - Transparent.svg" alt="Concrete Jungle">
+      </a>
+      <p class="footer-copy">Concrete Jungle SF · Forged in the fog</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth();
+      var date = today.getDate();
+
+      // Test schedule: key = YYYY-MM-DD, value = workout label
+      var scheduleByDate = {
+        '2025-02-16': 'CONCRETE JUNGLE @ 4PM',
+        '2025-02-17': 'PAUL GOODE @ 630AM',
+        '2026-02-16': 'CONCRETE JUNGLE @ 4PM',
+        '2026-02-17': 'PAUL GOODE @ 630AM'
+      };
+
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function dateKey(y, m, d) { return y + '-' + pad(m + 1) + '-' + pad(d); }
+
+      function weekdayMondayFirst(d) {
+        var day = d.getDay();
+        return day === 0 ? 6 : day - 1;
+      }
+
+      var displayYear = year;
+      var displayMonth = month;
+      var selectedDate = { y: year, m: month, d: date };
+
+      var grid = document.getElementById('calendar-grid');
+      var titleEl = document.getElementById('calendar-month-year');
+      var detailEl = document.getElementById('calendar-day-detail-message');
+
+      function isSameDay(a, b) {
+        return a.y === b.y && a.m === b.m && a.d === b.d;
+      }
+
+      function updateDetail(sel) {
+        var dayObj = new Date(sel.y, sel.m, sel.d);
+        var weekdayName = WEEKDAYS[dayObj.getDay()];
+        var dateLabel = weekdayName + ', ' + MONTHS[sel.m] + ' ' + sel.d;
+        var key = dateKey(sel.y, sel.m, sel.d);
+        var workout = scheduleByDate[key];
+        if (workout) {
+          detailEl.textContent = dateLabel + ' — ' + workout;
+        } else {
+          detailEl.textContent = dateLabel + ' — No workout scheduled.';
+        }
+      }
+
+      function buildCalendar() {
+        titleEl.textContent = MONTHS[displayMonth] + ' ' + displayYear;
+
+        var first = new Date(displayYear, displayMonth, 1);
+        var last = new Date(displayYear, displayMonth + 1, 0);
+        var startPadding = weekdayMondayFirst(first);
+        var daysInMonth = last.getDate();
+
+        grid.innerHTML = '';
+        grid.setAttribute('aria-label', MONTHS[displayMonth] + ' ' + displayYear);
+
+        for (var i = 0; i < startPadding; i++) {
+          var empty = document.createElement('div');
+          empty.className = 'calendar-day calendar-day--empty';
+          empty.setAttribute('aria-hidden', 'true');
+          grid.appendChild(empty);
+        }
+
+        for (var d = 1; d <= daysInMonth; d++) {
+          var cell = document.createElement('button');
+          cell.type = 'button';
+          cell.className = 'calendar-day';
+          cell.textContent = d;
+          var key = dateKey(displayYear, displayMonth, d);
+          cell.setAttribute('data-date', key);
+          cell.setAttribute('data-day', d);
+          cell.setAttribute('aria-label', 'View schedule for ' + MONTHS[displayMonth] + ' ' + d);
+          if (isSameDay(selectedDate, { y: displayYear, m: displayMonth, d: d })) {
+            cell.classList.add('calendar-day--highlighted');
+          }
+          if (displayYear === year && displayMonth === month && d === date) {
+            cell.setAttribute('aria-current', 'date');
+          }
+          cell.addEventListener('click', function() {
+            var dayNum = parseInt(this.getAttribute('data-day'), 10);
+            selectedDate = { y: displayYear, m: displayMonth, d: dayNum };
+            updateDetail(selectedDate);
+            grid.querySelectorAll('.calendar-day:not(.calendar-day--empty)').forEach(function(c) {
+              c.classList.remove('calendar-day--highlighted');
+            });
+            this.classList.add('calendar-day--highlighted');
+          });
+          grid.appendChild(cell);
+        }
+      }
+
+      document.getElementById('calendar-prev').addEventListener('click', function() {
+        displayMonth--;
+        if (displayMonth < 0) { displayMonth = 11; displayYear--; }
+        buildCalendar();
+      });
+
+      document.getElementById('calendar-next').addEventListener('click', function() {
+        displayMonth++;
+        if (displayMonth > 11) { displayMonth = 0; displayYear++; }
+        buildCalendar();
+      });
+
+      buildCalendar();
+      updateDetail(selectedDate);
+    })();
+  </script>
+</body>
+</html>

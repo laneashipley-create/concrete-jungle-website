@@ -437,8 +437,11 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 .page-hero .container > div {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .page-hero h1 {

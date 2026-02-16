@@ -493,6 +493,9 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   .page-hero-logo {
     height: 100px;
   }
+  .page-schedule .page-hero-logo {
+    height: 90px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -504,6 +507,9 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   }
   .page-hero-logo {
     height: 100px;
+  }
+  .page-schedule .page-hero-logo {
+    height: 90px;
   }
   .page-hero h1 {
     font-size: 1.25rem;

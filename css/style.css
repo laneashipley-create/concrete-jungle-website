@@ -444,12 +444,42 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 }
 
 @media (max-width: 768px) {
+  .page-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 1.25rem;
+    min-height: 0;
+  }
   .page-hero .container {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+  .page-hero .container > div {
+    align-items: center;
   }
   .page-hero-logo {
-    height: 150px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero-logo {
+    height: 110px;
+  }
+  .page-hero h1 {
+    font-size: 1.5rem;
+  }
+  .main-content {
+    padding: 2rem 0;
+  }
+  .hero-ctas {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .hero-cta {
+    width: 100%;
+    justify-content: center;
   }
 }
 

@@ -293,6 +293,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   color: var(--fog);
   margin: 0 0 2rem;
   opacity: 0.95;
+  text-transform: uppercase;
 }
 
 .hero-ctas {
@@ -365,14 +366,16 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   border-top: 1px solid rgba(255,255,255,0.06);
   padding: 2.5rem 0;
   margin-top: 4rem;
+  text-align: center;
 }
 
 .footer-inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1.5rem;
+  flex-direction: column;
 }
 
 .footer-logo {

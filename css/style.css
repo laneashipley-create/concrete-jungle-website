@@ -491,7 +491,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
     font-size: 0.7rem;
   }
   .page-hero-logo {
-    height: 72px;
+    height: 90px;
   }
 }
 
@@ -503,7 +503,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
     gap: 0.75rem;
   }
   .page-hero-logo {
-    height: 60px;
+    height: 80px;
   }
   .page-hero h1 {
     font-size: 1.25rem;

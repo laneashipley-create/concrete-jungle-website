@@ -285,12 +285,12 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 
 .hero .tagline {
   margin-bottom: 0.5rem;
-  font-size: clamp(1.2rem, 3.5vw, 1.65rem);
+  font-size: clamp(1.5rem, 4.375vw, 2.0625rem);
 }
 
 .hero-subline {
   font-family: var(--font-body);
-  font-size: clamp(1.2rem, 3.5vw, 1.65rem);
+  font-size: clamp(1.5rem, 4.375vw, 2.0625rem);
   color: var(--fog);
   margin: 0 0 2rem;
   opacity: 0.95;
@@ -380,7 +380,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 }
 
 .footer-logo {
-  height: 36px;
+  height: 120px;
   width: auto;
 }
 
@@ -396,14 +396,14 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 }
 
 .footer-copy {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--fog-dark);
   margin: 0;
 }
 
 .footer-instagram {
   margin: 0.5rem 0 0;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 .footer-instagram a {
   color: var(--fog-dark);

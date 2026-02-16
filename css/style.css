@@ -285,11 +285,12 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 
 .hero .tagline {
   margin-bottom: 0.5rem;
+  font-size: clamp(1.2rem, 3.5vw, 1.65rem);
 }
 
 .hero-subline {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(1.2rem, 3.5vw, 1.65rem);
   color: var(--fog);
   margin: 0 0 2rem;
   opacity: 0.95;

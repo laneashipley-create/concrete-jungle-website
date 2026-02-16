@@ -445,7 +445,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 
 @media (max-width: 768px) {
   .page-hero {
-    padding: 2.75rem 0 0.75rem;
+    padding: 4rem 0 0.75rem;
     min-height: 0;
   }
   .page-hero .container {
@@ -465,7 +465,7 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
 
 @media (max-width: 480px) {
   .page-hero {
-    padding: 2.5rem 0 0.6rem;
+    padding: 3.75rem 0 0.6rem;
   }
   .page-hero .container {
     gap: 0.75rem;

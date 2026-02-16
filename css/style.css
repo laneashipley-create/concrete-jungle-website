@@ -270,8 +270,17 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   opacity: 0.95;
 }
 
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 .hero-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.85rem 1.75rem;
   font-family: var(--font-display);
   font-size: 0.95rem;
@@ -280,12 +289,19 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   color: var(--white);
   background: var(--accent);
   border: 2px solid var(--accent);
+  text-decoration: none;
   transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 .hero-cta:hover {
   background: transparent;
   color: var(--accent);
   transform: translateY(-2px);
+}
+.hero-cta .hero-cta-icon {
+  flex-shrink: 0;
+}
+.hero-cta:hover .hero-cta-icon {
+  stroke: var(--accent);
 }
 
 /* ----- Buttons ----- */
@@ -354,6 +370,17 @@ h3 { font-size: 1.25rem; color: var(--fog-dark); }
   font-size: 0.85rem;
   color: var(--fog-dark);
   margin: 0;
+}
+
+.footer-instagram {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+}
+.footer-instagram a {
+  color: var(--fog-dark);
+}
+.footer-instagram a:hover {
+  color: var(--accent);
 }
 
 /* ----- Page content (inner pages) ----- */
